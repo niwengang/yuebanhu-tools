@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Upload QR Code Image</h2>
+<form id="upload-form" action="/qrcode/upload" method="post" enctype="multipart/form-data">
+    <label for="file">Select image:</label>
+    <input type="file" id="file" name="file" accept="image/*">
+    <input type="submit" value="Upload">
+</form>
+<br>
+<br>
+<div id="result"></div>
+
+<script>
+    document.getElementById('upload-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var formData = new FormData(event.target);
+        fetch('/qrcode/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('result').textContent = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+
+
+</html>

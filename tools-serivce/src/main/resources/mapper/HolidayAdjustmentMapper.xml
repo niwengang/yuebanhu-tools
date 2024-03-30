@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jackson.tools.dao.HolidayAdjustmentDao">
+
+    <resultMap id="HolidayAdjustmentResultMapper" type="cn.jackson.tools.entity.HolidayAdjustment">
+        <id column="DateFrom" property="dateFrom" jdbcType="DATE"/>
+        <id column="DateTo" property="dateTo" jdbcType="DATE"/>
+        <id column="isHoliday" property="isHoliday" jdbcType="TINYINT"/>
+    </resultMap>
+    <select id="queryAll"  resultMap="HolidayAdjustmentResultMapper">
+        SELECT * FROM holiday_adjustment
+    </select>
+
+</mapper>
